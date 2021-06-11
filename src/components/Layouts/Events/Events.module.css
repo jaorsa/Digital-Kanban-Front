@@ -1,0 +1,19 @@
+.container {
+  width: 35%;
+  max-width: 30rem;
+  margin: 5.5rem auto;
+  padding: 1rem;
+  /* border-style: dotted;
+  border-color: #897c99; */
+}
+
+.control {
+  width: auto;
+  border-style: dotted;
+  border-color: #897c99;
+  background-color: #a7acd9 ;
+  margin: 0rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

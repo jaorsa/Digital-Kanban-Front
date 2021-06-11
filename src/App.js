@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import AuthUserProvider from "./components/Session/UserProvider";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation";
+import SignUpPage from './components/SignUp/SignUpClass';
+import * as ROUTES from './constants/routes';
+import SignInPage from "./components/SignIn/SignInClass";
+import LayoutsPage from "./components/Layouts/LayoutPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthUserProvider>
+        <Navigation />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.LANDING} component={LayoutsPage} />
+      </AuthUserProvider>
+    </Router>
   );
 }
 

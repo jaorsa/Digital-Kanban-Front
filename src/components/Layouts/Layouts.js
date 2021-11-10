@@ -1,8 +1,5 @@
 import React from "react";
-import Events from "./Events/Events";
-import Flows from "./Flows/Flows";
 import UserContext from "../Session/user-context";
-import Runs from "./Runs/Runs";
 import LayoutsList from "./LayoutsList";
 const Layouts = props => (
   <>
@@ -11,9 +8,6 @@ const Layouts = props => (
         !!user.auth ? (
           <> 
             <LayoutsList layouts={props.layouts}/>
-            <Runs />
-            <Events />
-            <Flows />
           </>
         ) : (
           <p>

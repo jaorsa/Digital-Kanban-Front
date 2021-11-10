@@ -10,10 +10,10 @@ const Navigation = () => {
   return (
     <header>
       <h1>
-        Advanced Database Systems
-        {/* <Link to={ROUTES.LANDING}>
-        Advanced Database Systems
-        </Link> */}
+        Kanban Digital
+        {/* {<Link to={ROUTES.LANDING}>
+        Kanban Digital
+        </Link> } */}
       </h1>
       <nav className={classes.nav}>
         <UserContext.Consumer>
@@ -45,13 +45,13 @@ const NavigationAdmin = () => (
       <Link to={ROUTES.ACCOUNT}>Account</Link>
     </li>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <Link to={ROUTES.HOME}>Layouts</Link>
     </li>
     <li>
       <Link to={ROUTES.ADMIN}>Admin</Link>
     </li>
     <li>
-      <button>SignOut</button>
+    <SignOutButton />
     </li>
   </ul>
 );

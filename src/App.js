@@ -8,6 +8,7 @@ import SignUpPage from './components/SignUp/SignUpClass';
 import * as ROUTES from './constants/routes';
 import SignInPage from "./components/SignIn/SignInClass";
 import LayoutsPage from "./components/Layouts/LayoutPage";
+import AdminPage from "./components/Admin/AdminPage";
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Navigation />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.LANDING} component={LayoutsPage} />
+          <Route path={ROUTES.HOME} component={LayoutsPage} />
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
       </AuthUserProvider>
     </Router>
   );

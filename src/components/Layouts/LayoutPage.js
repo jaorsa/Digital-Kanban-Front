@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import Layouts from "./Layouts";
-import classes from './LayoutsPage.module.css';
+import classes from "./LayoutsPage.module.css";
+import UserContext from "../Session/user-context";
+import Events from "./Events/Events";
+import Flows from "./Flows/Flows";
+import Runs from "./Runs/Runs";
 
-const LayoutsPage = (props) => <LayoutPage />;
+const LayoutsPage = (props) => (
+  <UserContext.Consumer>
+    {(user) => !!user.auth && <LayoutPage />}
+  </UserContext.Consumer>
+);
 
 const DUMMY_DATA = [
   {
     id: 1,
-    name: 'First Layout',
-    
+    name: "First Layout",
   },
   {
     id: 2,
-    name: 'Layout New Design',
+    name: "Layout New Design",
   },
 ];
 
@@ -49,17 +56,26 @@ class LayoutPage extends Component {
 
   componentWillUnmount() {}
 
-  onClickHandler = id =>{
-      console.log(id + 'received!');
-  }
+  onClickHandler = (id) => {
+    console.log(id + "received!");
+  };
 
   render() {
     const { loading, layouts } = this.state;
     return (
-      <div className={classes.container}>
-        <h1>Layouts</h1>
-        <Layouts layouts={layouts}/>
-      </div>
+      <>
+        <div className={classes.all_container}>
+          <div className={classes.container}>
+            <h1>Layouts</h1>
+            <Layouts layouts={layouts} />
+          </div>
+          <Runs />
+          <div className={classes.report}>
+            <Events />
+            <Flows />
+          </div>
+        </div>
+      </>
     );
   }
 }

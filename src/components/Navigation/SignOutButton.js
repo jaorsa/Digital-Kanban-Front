@@ -10,9 +10,9 @@ const SignOutButton = () => {
         userCtx.removeUser();
     };
 
-    <button type="button" onClick={logoutHandler}>
+    return(<button type="button" onClick={logoutHandler}>
         Sign Out
-    </button>
+    </button>)
 };
 
 export default SignOutButton;

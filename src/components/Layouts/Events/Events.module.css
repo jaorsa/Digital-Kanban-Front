@@ -1,8 +1,9 @@
 .container {
-  width: 35%;
-  max-width: 30rem;
-  margin: 5.5rem auto;
-  padding: 1rem;
+  width: auto;
+  max-width: 50rem;
+  padding: 3rem;
+  /* margin: 5.5rem auto; */
+  /* padding: 2rem; */
   /* border-style: dotted;
   border-color: #897c99; */
 }
@@ -12,7 +13,7 @@
   border-style: dotted;
   border-color: #897c99;
   background-color: #a7acd9 ;
-  margin: 0rem 0;
+  /* margin: 0rem 0; */
   display: flex;
   align-items: center;
   flex-direction: column;

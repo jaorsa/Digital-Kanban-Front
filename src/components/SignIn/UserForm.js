@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./UserForm.module.css";
 import Input from "..//UI/Input/Input";
-import Button from '../UI/Button/Button';
+import Button from "../UI/Button/Button";
 
 const UserForm = (props) => {
   const [passwordOneState, setNewPasswordOne] = useState("");
@@ -10,10 +10,7 @@ const UserForm = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   const onSubmitHandler = (event) => {
-    props.onSave(
-      usernameState,
-      passwordOneState
-    );
+    props.onSave(usernameState, passwordOneState);
     resetForm();
     event.preventDefault();
   };
@@ -26,8 +23,7 @@ const UserForm = (props) => {
 
   const formHandler = () => {
     setFormIsValid(
-        passwordOneState.trim().length > 6 &&
-        usernameState.trim().length > 0 
+      passwordOneState.trim().length > 0 && usernameState.trim().length > 0
     );
   };
 
@@ -42,31 +38,42 @@ const UserForm = (props) => {
   };
 
   return (
-    <Card className={classes.login}>
-      <form onSubmit={onSubmitHandler}>
-        <Input
-          label="Username"
-          type="text"
-          name="name"
-          value={usernameState}
-          onChange={usernameChangeHandler}
-          placeholder="Username"
-        />
-        <Input
-          label="Password"
-          id="passwordOne"
-          name="passwordOne"
-          type="password"
-          value={passwordOneState}
-          onChange={passwordOneChangeHandler}
-          placeholder="Password"
-        />
-        <Button onClick={props.onCancel}>Cancel</Button>
-        <Button disabled={!formIsValid} type="submit">
-          Continue
-        </Button>
-      </form>
-    </Card>
+    <div className={classes.control}>
+      <Card className={`${classes.login} `}>
+        <form onSubmit={onSubmitHandler}>
+          <Input
+            label="Email"
+            type="email"
+            name="name"
+            value={usernameState}
+            onChange={usernameChangeHandler}
+            placeholder="AXXXXX@tec.mx"
+          />
+          <Input
+            label="First Name"
+            id="first_name"
+            name="first_name"
+            type="text"
+            value={passwordOneState}
+            onChange={passwordOneChangeHandler}
+            placeholder="Jorge"
+          />
+          <div className={classes.button__container}>
+            <button
+              disabled={!formIsValid}
+              type="submit"
+              className={classes.login__submit}
+            >
+              <span className={classes.button__text}>Log In</span>
+            </button>
+            {/* <Button onClick={props.onCancel}>Cancel</Button>
+            <Button disabled={!formIsValid} type="submit">
+              Continue
+            </Button> */}
+          </div>
+        </form>
+      </Card>
+    </div>
   );
 };
 

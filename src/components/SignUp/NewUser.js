@@ -7,14 +7,14 @@ import Button from '../UI/Button/Button';
 const NewUser = (props) => {
   const [passwordOneState, setNewPasswordOne] = useState("");
   const [passwordTwoState, setNewPasswordTwo] = useState("");
-  const [usernameState, setNewUsername] = useState("");
+  const [emailState, setNewEmail] = useState("");
   const [first_nameState, setNewFirstName] = useState("");
   const [last_nameState, setNewLastName] = useState("");
   const [formIsValid, setFormIsValid] = useState(false);
 
   const onSubmitHandler = (event) => {
     props.onSave(
-      usernameState,
+      emailState,
       first_nameState,
       last_nameState,
       passwordOneState
@@ -29,14 +29,14 @@ const NewUser = (props) => {
     setNewFirstName("");
     setNewLastName("");
     setFormIsValid(false);
-    setNewUsername("");
+    setNewEmail("");
   };
 
   const formHandler = () => {
     setFormIsValid(
         passwordOneState.trim().length > 6 &&
         passwordOneState === passwordTwoState &&
-        usernameState.trim().length > 0 &&
+        emailState.trim().length > 0 &&
         first_nameState.trim().length > 0 &&
         last_nameState.trim().length > 0 
     );
@@ -52,8 +52,8 @@ const NewUser = (props) => {
     formHandler();
   };
 
-  const usernameChangeHandler = (event) => {
-    setNewUsername(event.target.value);
+  const emailChangeHandler = (event) => {
+    setNewEmail(event.target.value);
     formHandler();
   };
 
@@ -71,12 +71,12 @@ const NewUser = (props) => {
     <Card className={classes.login}>
       <form onSubmit={onSubmitHandler}>
         <Input
-          label="Username"
-          type="text"
+          label="Email"
+          type="email"
           name="name"
-          value={usernameState}
-          onChange={usernameChangeHandler}
-          placeholder="Username"
+          value={emailState}
+          onChange={emailChangeHandler}
+          placeholder="AXXXXXXX@tec.mx"
         />
         <Input
           label="First Name"

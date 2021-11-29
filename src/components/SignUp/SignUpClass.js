@@ -1,30 +1,34 @@
 import { Component, useContext } from "react";
 import NewUser from "./NewUser";
-import UserContext from "../Session/user-context";
-import * as ROUTES from '../../constants/routes';
-import { useHistory } from 'react-router-dom';
+import UserContext from "../../store/Auth/user-context";
+import * as ROUTES from "../../constants/routes";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import user from "../../constants/user";
 
 const SignUpPage = () => {
-    const userCtx = useContext(UserContext);
-    const history = useHistory();
+  const userCtx = useContext(UserContext);
+  const history = useHistory();
 
-    const onSaveHandler = (data) => {
-        userCtx.addUser(data);
-        history.push(ROUTES.LANDING);
-    }
+  const onSaveHandler = (data) => {
+    userCtx.addUser(data);
+    history.push(ROUTES.HOME);
+  };
 
-    const onCancelHandler = () => {
-      history.push(ROUTES.LANDING);
-    }
+  const onCancelHandler = () => {
+    history.push(ROUTES.LANDING);
+  };
 
-    return <>
-    <h1>SignUp</h1>
-    <SignUp onSave={onSaveHandler} onCancel={onCancelHandler}/>
-  </>
+  return (
+    <>
+      <h1>SignUp</h1>
+      <SignUp onSave={onSaveHandler} onCancel={onCancelHandler} />
+    </>
+  );
 };
 
 const INITIAL_STATE = {
-  username: "",
+  email: "",
   password: "",
   first_name: "",
   last_name: "",
@@ -46,31 +50,32 @@ class SignUp extends Component {
     this.props.history.push(ROUTES.HOME);
   };
 
-  onSubmitHandler = (username, first, last, password) => {
+  onSubmitHandler = (email, first, last, password) => {
     const data = {
-      username: username,
       first_name: first,
       last_name: last,
-      password: password,
+      role_id: 5,
+      email: email,
     };
-    fetch(`API`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    user.data = data;
+    console.log(data);
+    axios
+      .post("http://localhost:3001/user", data)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        this.props.onSave(data);
+      })
       .catch((err) => console.error("Error:", err));
   };
 
-  onTrial = (username, first, last, password) => {
+  onTrial = (email, first, last, password) => {
     const data = {
-      username: username,
+      email: email,
       first_name: first,
       last_name: last,
       password: password,
+      role_id: 5,
     };
     this.props.onSave(data);
     this.setState({ ...INITIAL_STATE });
@@ -78,7 +83,9 @@ class SignUp extends Component {
   };
 
   render() {
-    return <NewUser onCancel={this.props.onCancel} onSave={this.onTrial} />;
+    return (
+      <NewUser onCancel={this.props.onCancel} onSave={this.onSubmitHandler} />
+    );
   }
 }
 

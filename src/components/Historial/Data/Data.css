@@ -1,0 +1,12 @@
+th,
+td {
+  border: 1px solid black;
+  margin: 0px 0px;
+  padding: 5px 5px;
+}
+
+table,
+.csv-link {
+  margin: 6rem auto;
+  align-items: center;
+}

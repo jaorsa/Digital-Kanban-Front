@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Layouts from "./Layouts";
 import classes from "./LayoutsPage.module.css";
-import UserContext from "../Session/user-context";
+import UserContext from "../../store/Auth/user-context";
 import Events from "./Events/Events";
 import Flows from "./Flows/Flows";
 import Runs from "./Runs/Runs";
@@ -64,6 +64,7 @@ class LayoutPage extends Component {
     const { loading, layouts } = this.state;
     return (
       <>
+        {!loading && <p>Loading</p>}
         <div className={classes.all_container}>
           <div className={classes.container}>
             <h1>Layouts</h1>

@@ -7,15 +7,15 @@ const Runs = (props) => <RunsPage />;
 const DUMMY_DATA = [
   {
     id: 1,
-    reference: 'Reduced Batches Run',
-    start_time: 'XX:XX:XX',
-    end_time: 'XX:XX:XX',
+    reference: "Reduced Batches Run",
+    start_time: "XX:XX:XX",
+    end_time: "XX:XX:XX",
   },
   {
     id: 2,
-    reference: 'Reduced Batches Run',
-    start_time: 'XX:XX:XX',
-    end_time: 'XX:XX:XX',
+    reference: "Reduced Batches Run",
+    start_time: "XX:XX:XX",
+    end_time: "XX:XX:XX",
   },
 ];
 
@@ -52,17 +52,17 @@ class RunsPage extends Component {
 
   componentWillUnmount() {}
 
-  onClickHandler = id =>{
-      console.log(id + 'received!');
-  }
+  onClickHandler = (id) => {
+    console.log(id + "received!");
+  };
 
   render() {
     const { loading, runs } = this.state;
     return (
       <div className={classes.container}>
         <h1>Runs</h1>
-        {/* {loading && <div>Loading ...</div>} */}
-        <RunsList runs={runs} onClick={this.onClickHandler}/>
+        {loading && <div>Loading ...</div>}
+        <RunsList runs={runs} onClick={this.onClickHandler} />
       </div>
     );
   }

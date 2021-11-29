@@ -1,13 +1,13 @@
 import React from "react";
-import UserContext from "../Session/user-context";
+import UserContext from "../../store/Auth/user-context";
 import LayoutsList from "./LayoutsList";
-const Layouts = props => (
+const Layouts = (props) => (
   <>
     <UserContext.Consumer>
       {(user) =>
         !!user.auth ? (
-          <> 
-            <LayoutsList layouts={props.layouts}/>
+          <>
+            <LayoutsList layouts={props.layouts} />
           </>
         ) : (
           <p>

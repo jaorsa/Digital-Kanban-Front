@@ -2,6 +2,7 @@ import React from "react";
 
 const SessionContext = React.createContext({
   product: null,
+  run: null,
   comments: [],
   drawers: [],
   drawer: null,
@@ -11,6 +12,7 @@ const SessionContext = React.createContext({
   addComments: (comments) => {},
   addDrawers: (drawers) => {},
   addKanbans: (kanbans) => {},
+  selectRun: (run) => {},
   selectProduct: (product) => {},
   selectDrawer: (drawer) => {},
   selectStation: (station) => {},

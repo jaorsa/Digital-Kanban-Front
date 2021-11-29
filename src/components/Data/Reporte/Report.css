@@ -1,0 +1,29 @@
+.reports {
+  display: flex;
+}
+
+.col-1 {
+  /* background-color: yellow; */
+  flex: 1;
+}
+
+.col-2 {
+  /* background-color: orange; */
+  flex: 1;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+.button {
+  text-decoration: none;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}

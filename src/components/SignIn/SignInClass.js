@@ -7,14 +7,16 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import user from "../../constants/user";
 import Loading from "../UI/Loading/Loading";
+import toast from "react-hot-toast";
 
 const SignInPage = () => {
   const userCtx = useContext(UserContext);
   const history = useHistory();
 
   const onSaveHandler = (data) => {
+    toast.success("Successfully logged in");
     userCtx.addUser(data);
-    history.push(ROUTES.HOME);
+    history.replace(ROUTES.HOME);
   };
 
   const onCancelHandler = () => {
@@ -62,9 +64,10 @@ class SignIn extends Component {
     );
     if (result.length > 0) {
       this.props.onSave(result[0]);
-      user.data = result[0];
+
+      // user.data = result[0];
       console.log(result);
-      console.log("User: " + user.data.user_id);
+      // console.log("User: " + user.data.user_id);
     }
   };
 

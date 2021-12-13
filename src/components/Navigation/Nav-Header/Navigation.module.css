@@ -47,7 +47,8 @@ header h1 {
 }
 
 .nav a:hover,
-.nav a:active {
+.nav a:active,
+.nav a.active {
   color: #c7b6bd;
 }
 

@@ -1,21 +1,26 @@
-import { Component, useContext } from "react";
-
-import UserContext from "../../store/Auth/user-context";
-// import UpdateUser from "./AccountPage";
-import * as ROUTES from "../../constants/routes";
+import { Component, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../store/Auth/user-context";
 import axios from "axios";
-import user from "../../constants/user";
 import HistorialPage from "./HistorialPage";
+import New__Layout from "./Layouts/New__Layout/New__Layout";
 
-const RunPage = () => {
+const HistorialCatalog = () => {
   const userCtx = useContext(UserContext);
-  const history = useHistory();
+  const [show, setShow] = useState(false);
+
+  let content = <New__Layout />;
+
+  const clickHandler = () => {
+    setShow(!show);
+  };
 
   return (
     <>
-      <h1>Historial Page</h1>
-      <Historial />
+      <p>Historial</p>
+      {!show && <button onClick={clickHandler}>Add New Layout</button>}
+      {show && content}
+      <Historial user_id={userCtx.auth.user_id} />
     </>
   );
 };
@@ -25,33 +30,42 @@ class Historial extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      loading: true,
       layouts: [],
+      latest__runs: [],
     };
   }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3001/layout", { crossdomain: true })
-      .then((res) => {
-        console.log(res.data);
-        var result = res.data.filter(
-          (item) => item.user_id === user.data.user_id
-        );
+  async componentDidMount() {
+    const layout__promise = await axios.get("http://localhost:3001/layout");
+    const run__promise = await axios.get("http://localhost:3001/run");
 
-        if (result !== undefined) {
-          console.log("result data " + result);
-        }
-        this.setState({ loading: true, layouts: result });
+    const layoutsByUser = layout__promise.data.filter(
+      (item) => item.user_id === this.props.user_id
+    );
+    if (layoutsByUser !== undefined || layoutsByUser.length > 0) {
+      console.log("result layouts ");
+      console.log(layoutsByUser);
+
+      const latest__runs = run__promise.data.filter((run) =>
+        layoutsByUser.find((layout) => run.layout_id === layout.layout_id)
+      );
+
+      this.setState({
+        loading: false,
+        layouts: layoutsByUser,
+        latest__runs: latest__runs,
       });
+    }
   }
 
   componentWillUnmount() {}
 
   render() {
-    const { loading, layouts } = this.state;
-    return <HistorialPage items={layouts} />;
+    const { loading, layouts, latest__runs } = this.state;
+    // return <p>loading...</p>;
+    return <HistorialPage layouts={layouts} runs={latest__runs} />;
   }
 }
 
-export default RunPage;
+export default HistorialCatalog;

@@ -39,7 +39,7 @@ const ReportGraph = (props) => {
           ],
         }}
       />
-      <Line
+      {/* <Line
         datasetIdKey="id"
         data={{
           labels: ["Jun", "Jul", "Aug"],
@@ -56,7 +56,7 @@ const ReportGraph = (props) => {
             },
           ],
         }}
-      />
+      /> */}
       <div className="button-container">
         <Button>
           <CSVLink className="button" data={props.data} headers={headers}>

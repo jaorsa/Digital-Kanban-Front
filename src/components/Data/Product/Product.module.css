@@ -1,6 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+.product__section {
+  /* list-style-type: none; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0rem auto;
+  align-content: space-evenly;
+}
 
-.stations {
+.products {
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,6 +19,17 @@
   /* background-color: #a9c9ff;
   background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%); */
 }
+.material {
+  /* background-color: black; */
+  width: 100%;
+  min-height: 50px;
+  margin: 6em 0 -10em 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   /* background: black; */
   max-width: 100vw;
@@ -104,4 +123,69 @@
   ); */
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* line */
+
+.hr {
+  width: 100%;
+  height: 2px;
+  display: block;
+  position: relative;
+  margin-bottom: 0em;
+  /* padding: 2em 0; */
+}
+
+.hr::after,
+.hr::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 50%;
+  left: 0;
+}
+
+.hr::before {
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 15px;
+  background-position: center;
+  z-index: 1;
+}
+
+.hr::after {
+  transition: opacity 0.3s ease, animation 0.3s ease;
+
+  background: linear-gradient(
+    to right,
+    #62efab 5%,
+    #f2ea7d 15%,
+    #f2ea7d 25%,
+    #ff8797 35%,
+    #ff8797 45%,
+    #e1a4f4 55%,
+    #e1a4f4 65%,
+    #82fff4 75%,
+    #82fff4 85%,
+    #62efab 95%
+  );
+
+  background-size: 200%;
+  background-position: 0%;
+  animation: bar 15s linear infinite;
+}
+
+@keyframes bar {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
 }

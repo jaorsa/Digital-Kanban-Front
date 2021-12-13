@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./NewUser.module.css";
 import Input from "..//UI/Input/Input";
-import Button from '../UI/Button/Button';
+import Button from "../UI/Button/Button";
 
 const NewUser = (props) => {
-  const [passwordOneState, setNewPasswordOne] = useState("");
-  const [passwordTwoState, setNewPasswordTwo] = useState("");
+  // const [passwordOneState, setNewPasswordOne] = useState("");
+  // const [passwordTwoState, setNewPasswordTwo] = useState("");
   const [emailState, setNewEmail] = useState("");
   const [first_nameState, setNewFirstName] = useState("");
   const [last_nameState, setNewLastName] = useState("");
@@ -16,16 +16,16 @@ const NewUser = (props) => {
     props.onSave(
       emailState,
       first_nameState,
-      last_nameState,
-      passwordOneState
+      last_nameState
+      // passwordOneState
     );
     resetForm();
     event.preventDefault();
   };
 
   const resetForm = () => {
-    setNewPasswordOne("");
-    setNewPasswordTwo("");
+    // setNewPasswordOne("");
+    // setNewPasswordTwo("");
     setNewFirstName("");
     setNewLastName("");
     setFormIsValid(false);
@@ -34,21 +34,19 @@ const NewUser = (props) => {
 
   const formHandler = () => {
     setFormIsValid(
-        passwordOneState.trim().length > 6 &&
-        passwordOneState === passwordTwoState &&
-        emailState.trim().length > 0 &&
+      emailState.trim().length > 0 &&
         first_nameState.trim().length > 0 &&
-        last_nameState.trim().length > 0 
+        last_nameState.trim().length > 0
     );
   };
 
   const passwordOneChangeHandler = (event) => {
-    setNewPasswordOne(event.target.value);
+    // setNewPasswordOne(event.target.value);
     formHandler();
   };
 
   const passwordTwoChangeHandler = (event) => {
-    setNewPasswordTwo(event.target.value);
+    // setNewPasswordTwo(event.target.value);
     formHandler();
   };
 
@@ -94,7 +92,7 @@ const NewUser = (props) => {
           value={last_nameState}
           onChange={last_nameChangeHandler}
         />
-        <Input
+        {/* <Input
           label="Password"
           id="passwordOne"
           name="passwordOne"
@@ -111,7 +109,7 @@ const NewUser = (props) => {
           value={passwordTwoState}
           onChange={passwordTwoChangeHandler}
           placeholder="Confirm Password"
-        />
+        /> */}
         <Button onClick={props.onCancel}>Cancel</Button>
         <Button disabled={!formIsValid} type="submit">
           Continue

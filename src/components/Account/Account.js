@@ -5,6 +5,7 @@ import UpdateUser from "./AccountPage";
 import * as ROUTES from "../../constants/routes";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const EditAccountPage = () => {
   const userCtx = useContext(UserContext);
@@ -12,6 +13,7 @@ const EditAccountPage = () => {
 
   const onSaveHandler = (data) => {
     // userCtx.addUser(data);
+    toast.success("Profile was updated successfully");
     history.push(ROUTES.LANDING);
   };
 

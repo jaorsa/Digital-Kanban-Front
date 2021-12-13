@@ -1,6 +1,6 @@
 import UserContext from "../../../store/Auth/user-context";
 // import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as ROUTES from "../../../constants/routes";
 import classes from "./Navigation.module.css";
 import SignOutButton from "./SignOutButton";
@@ -11,9 +11,13 @@ const Navigation = () => {
     <header>
       <h1>
         {/* Kanban Digital */}
-        <Link className={classes.link} to={ROUTES.HOME}>
+        <NavLink
+          activeClassName={classes.active}
+          className={classes.link}
+          to={ROUTES.HOME}
+        >
           Kanban Digital
-        </Link>
+        </NavLink>
       </h1>
       <nav className={classes.nav}>
         <UserContext.Consumer>
@@ -37,10 +41,14 @@ const Navigation = () => {
 const NavigationAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.ACCOUNT}>
+        Account
+      </NavLink>
     </li>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.LANDING}>
+        Landing
+      </NavLink>
     </li>
     <li>
       <SignOutButton />
@@ -51,13 +59,19 @@ const NavigationAuth = () => (
 const NavigationAdmin = () => (
   <ul>
     <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.ACCOUNT}>
+        Account
+      </NavLink>
     </li>
     <li>
-      <Link to={ROUTES.HOME}>Home</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.HOME}>
+        Home
+      </NavLink>
     </li>
     <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.ADMIN}>
+        Admin
+      </NavLink>
     </li>
     <li>
       <SignOutButton />
@@ -68,10 +82,14 @@ const NavigationAdmin = () => (
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.SIGN_IN}>
+        Sign In
+      </NavLink>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+      <NavLink activeClassName={classes.active} to={ROUTES.SIGN_UP}>
+        Sign Up
+      </NavLink>
     </li>
   </ul>
 );

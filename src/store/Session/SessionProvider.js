@@ -9,6 +9,7 @@ const defaultState = {
   station: null,
   kanbans: [],
   kanban: null,
+  layout: 0,
 };
 
 const sessionReducer = (state, action) => {
@@ -47,7 +48,11 @@ const sessionReducer = (state, action) => {
     console.log("storing actual product... " + data__productObject);
     return { ...state, product: data__productObject };
   }
-
+  if (action.type === "SELECT__LAYOUT") {
+    const data__layoutObject = action.layout;
+    console.log("storing actual layout... " + data__layoutObject);
+    return { ...state, layout: data__layoutObject };
+  }
   if (action.type === "REMOVE__DATA") {
     console.log("CLEANUP");
     return defaultState;
@@ -87,6 +92,9 @@ const SessionProvider = (props) => {
   const productHandler = (data__product) => {
     dispatchDataAction({ type: "SELECT__PRODUCT", product: data__product });
   };
+  const layoutHandler = (data__layout) => {
+    dispatchDataAction({ type: "SELECT__LAYOUT", layout: data__layout });
+  };
 
   const removeDataHandler = () => {
     dispatchDataAction({ type: "REMOVE__DATA" });
@@ -100,6 +108,7 @@ const SessionProvider = (props) => {
     station: dataState.station,
     kanbans: dataState.kanbans,
     kanban: dataState.kanban,
+    layout: dataState.layout,
     addComments: getCommentsHandler,
     addDrawers: getDrawersHandler,
     addKanbans: getKanbansHandler,
@@ -107,6 +116,7 @@ const SessionProvider = (props) => {
     selectDrawer: drawerHandler,
     selectStation: stationHandler,
     selectKanban: kanbanHandler,
+    selectLayout: layoutHandler,
     removeData: removeDataHandler,
   };
 

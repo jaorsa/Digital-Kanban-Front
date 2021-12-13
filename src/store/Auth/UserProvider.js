@@ -10,7 +10,7 @@ const userReducer = (state, action) => {
   if (action.type === "ADD_USER") {
     const authUser = action.auth;
     console.log("changing..." + authUser);
-    return { ...defaultUserState, auth: authUser};
+    return { ...defaultUserState, auth: authUser };
   }
   if (action.type === "REMOVE_USER") {
     return defaultUserState;
@@ -19,17 +19,20 @@ const userReducer = (state, action) => {
 };
 
 const AuthUserProvider = (props) => {
+  const initialUser = localStorage.getItem("auth");
   const [userState, dispatchUserAction] = useReducer(
     userReducer,
     defaultUserState
   );
 
   const loginHandler = (user) => {
-    dispatchUserAction({ type: "ADD_USER", auth: user});
+    dispatchUserAction({ type: "ADD_USER", auth: user });
+    localStorage.setItem("auth", user);
   };
 
   const removeUserHandler = () => {
-    dispatchUserAction({ type: "REMOVE_USER"});
+    dispatchUserAction({ type: "REMOVE_USER" });
+    localStorage.removeItem("auth");
   };
 
   const userContext = {

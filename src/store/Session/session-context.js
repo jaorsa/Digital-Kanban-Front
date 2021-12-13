@@ -9,6 +9,7 @@ const SessionContext = React.createContext({
   station: null,
   kanbans: [],
   kanban: null,
+  layout: null,
   addComments: (comments) => {},
   addDrawers: (drawers) => {},
   addKanbans: (kanbans) => {},
@@ -17,6 +18,7 @@ const SessionContext = React.createContext({
   selectDrawer: (drawer) => {},
   selectStation: (station) => {},
   selectKanban: (kanban) => {},
+  selectLayout: (layout) => {},
   removeData: () => {},
 });
 

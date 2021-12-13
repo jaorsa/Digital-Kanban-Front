@@ -13,3 +13,4 @@ export const STATIONS = "/stations";
 export const KANBANS = "/kanbans";
 export const REPORTS = "/reports";
 export const DATA = "/data";
+export const LAYOUT = "/layout__create";

@@ -1,0 +1,106 @@
+.container {
+  font-family: "Inter", sans-serif;
+  position: absolute;
+  z-index: 10;
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  /* width: 100%; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.menu {
+  display: flex;
+  width: 150px;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
+}
+
+.menu__list {
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 8px 0px 8px;
+  list-style: none;
+}
+
+.menu__item {
+  position: relative;
+}
+
+.menu__button__edit {
+  font: inherit;
+  border: 0;
+  padding: 8px 8px;
+  padding-right: 36px;
+  width: 100%;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  /* cursor: pointer; */
+}
+
+.menu__button__edit::before {
+  content: url("https://img.icons8.com/ios/250/000000/settings.png");
+  transform: scale(0.08);
+  flex-shrink: 0;
+  margin-right: 20px;
+  stroke: #898c94;
+  width: 20px;
+  height: 20px;
+  float: left;
+
+  margin-top: -20px;
+}
+
+.menu__button__edit:hover::before {
+  flex-shrink: 0;
+  stroke: #898c94;
+}
+
+.menu__button__edit:hover {
+  background-color: #f1f3f7;
+  stroke: #3a3c42;
+}
+
+.menu__button__delete {
+  font: inherit;
+  border: 0;
+  padding: 8px 8px;
+  padding-right: 36px;
+  width: 100%;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  /* cursor: pointer; */
+}
+
+.menu__button__delete::before {
+  content: url("https://img.icons8.com/ios/250/000000/delete-sign.png");
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-right: 18px;
+  margin-top: -16px;
+  transform: scale(0.06);
+}
+
+.menu__button__delete:hover::before {
+  flex-shrink: 0;
+}
+
+.menu__button__delete:hover {
+  background-color: #f1f3f7;
+  /* color: #d92027; */
+}

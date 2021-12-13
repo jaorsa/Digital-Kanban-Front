@@ -3,25 +3,24 @@ import "./Report.css";
 const ReportData = (props) => {
   return (
     <>
-      <br></br>
-      <h5>Tiempo de ciclo: {props.item.ct}</h5>
-      <br></br>
-      <h5>Número de Operadores: {props.item.n_operators}</h5>
-      <br></br>
-      <h5>Work in Progress: {props.item.wip}</h5>
-      <br></br>
-      <h5>Tiempo de transporte: {props.item.tt}</h5>
-      <br></br>
-      <h5>Tiempo de takt: {props.item.tkt}</h5>
-      <br></br>
-      <h5>Tiempo de takt real: {props.item.tkt_real}</h5>
-      <br></br>
-      <h5>Tiempo idle: {props.item.idle}</h5>
-      <br></br>
-      <h5>Tiempo lead: {props.item.lead}</h5>
-      <br></br>
-      <h5>Tiempo neto de produccion: {props.item.net}</h5>
-      <br></br>
+      <p>hello</p>
+      <h5>Tiempo de ciclo: </h5>
+      <p>{props.item.ct}</p>
+      <h5>Número de Operadores: </h5>
+      <p>{props.item.n_operators}</p>
+      <h5>Work in Progress: </h5>
+      <p>{props.item.wip}</p>
+      <h5>Tiempo de transporte: </h5>
+      <p>{props.item.tt}</p>
+      <h5>Tiempo de takt: </h5> <p>{props.item.tkt}</p>
+      <h5>Tiempo de takt real: </h5>
+      <p>{props.item.tkt_real}</p>
+      <h5>Tiempo idle: </h5>
+      <p>{props.item.idle}</p>
+      <h5>Tiempo lead: </h5>
+      <p>{props.item.lead}</p>
+      <h5>Tiempo neto de produccion: </h5>
+      <p>{props.item.net}</p>
     </>
   );
 };

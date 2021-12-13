@@ -1,0 +1,16 @@
+.container {
+  height: 500px;
+  width: 50%;
+}
+
+.content {
+  height: 100%;
+  list-style-type: none;
+}
+
+.run__item {
+  height: 100px;
+  border: 1px solid black;
+  margin: 15px;
+  border-radius: 5px;
+}

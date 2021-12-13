@@ -8,6 +8,8 @@ import Button from "../../UI/Button/Button";
 
 import ProductSection from "./ProductSection";
 import Loading from "../../UI/Loading/Loading";
+import classes from "./Product.module.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const Products = () => {
   const history = useHistory();
@@ -38,18 +40,22 @@ const Products = () => {
   return (
     <React.Fragment>
       <p>asdasds</p>
-      {!showForm && (
-        <Button className="material" onClick={showHandler}>
-          Add New Material
-        </Button>
-      )}
-      {showForm && (
-        <ProductInput
-          onAddProduct={addProductHandler}
-          onCancel={onCancelHandler}
-        />
-      )}
-      <ProductPage />
+      <div className={classes.product__section}>
+        <h1 className={classes.title}>PRODUCTS</h1>
+        <b className={classes.hr}></b>
+        {!showForm && (
+          <div className={classes.material}>
+            <Button onClick={showHandler}>Add New Material</Button>
+          </div>
+        )}
+        {showForm && (
+          <ProductInput
+            onAddProduct={addProductHandler}
+            onCancel={onCancelHandler}
+          />
+        )}
+        <ProductPage />
+      </div>
     </React.Fragment>
   );
 };
@@ -85,7 +91,7 @@ class ProductPage extends Component {
   render() {
     const { loading, products } = this.state;
     return (
-      <div>
+      <div className={classes.products}>
         {!loading && <Loading />}
         {loading && <ProductSection products={products} />}
       </div>
